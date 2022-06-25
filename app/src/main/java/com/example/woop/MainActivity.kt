@@ -1,12 +1,16 @@
 package com.example.woop
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.woop.databinding.ActivityMainBinding
 import com.example.woop.model.Apart
 import com.example.woop.model.MainGlass
+import com.example.woop.ui.CLickDialog
+import com.example.woop.ui.GlassActivity
 import com.example.woop.ui.base.BaseActivity
 import com.example.woop.ui.item.WallItem
 import com.xwray.groupie.GroupieAdapter
@@ -14,6 +18,7 @@ import com.xwray.groupie.Section
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
+    var isFab = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setOnView()
@@ -32,19 +37,40 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
 
         binding.fabMain.setOnClickListener {
-//            ObjectAnimator.ofFloat(binding.llFab, "translationY", -0f).apply { start() }
+            isFab = !isFab
+            if (isFab) {
+                binding.llFab.visibility = View.VISIBLE
+                val fadeOut3 = ObjectAnimator.ofFloat(binding.llFab, "alpha", 0f, 1f)
+                fadeOut3.duration = 500
+                fadeOut3.start()
+                ObjectAnimator.ofFloat(binding.llFab, "translationY", -200f).apply { start() }
+            } else {
+                val fadeOut3 = ObjectAnimator.ofFloat(binding.llFab, "alpha", 1f, 0f)
+                fadeOut3.duration = 500
+                fadeOut3.start()
+                ObjectAnimator.ofFloat(binding.llFab, "translationY", 0f).apply { start() }
+                binding.llFab.visibility = View.INVISIBLE
+            }
+        }
+        binding.btnCock.setOnClickListener {
+            CLickDialog().show(this.supportFragmentManager, "logout")
+        }
+
+        binding.rvBuilding.setOnClickListener {
+            startActivity(Intent(this@MainActivity, GlassActivity::class.java))
         }
     }
 
     private fun setOnView() {
         val apart = Apart(
-            building_name = "서울 광역시 진달래 아파트 403호",
+            building_name = "서울 광역시 진달래 아파트 403동",
             building_floor = 15,
             building_room_number = 8,
             user_floor = 14,
             user_room_number = 3
         )
         binding.include.tvTitle.text = apart.building_name
+        binding.include.tvTitle.visibility = View.VISIBLE
 
         var groupAdapter = GroupieAdapter()
         val buildingSection = Section()
@@ -63,6 +89,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             StaggeredGridLayoutManager(4, LinearLayoutManager.VERTICAL)
         staggeredGridLayoutManager.reverseLayout = true
         binding.rvBuilding.layoutManager = staggeredGridLayoutManager
+
         groupAdapter.spanSizeLookup
     }
 }

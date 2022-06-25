@@ -5,21 +5,19 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.woop.R
-import com.example.woop.databinding.ActivityGlassBinding
+import com.example.woop.databinding.ActivityClickGlassBinding
 import com.example.woop.model.Apart
 import com.example.woop.ui.base.BaseActivity
 import com.example.woop.ui.item.GlassExpandItem
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 
-class GlassActivity : BaseActivity<ActivityGlassBinding>(R.layout.activity_glass) {
+class GlassClickActivity : BaseActivity<ActivityClickGlassBinding>(R.layout.activity_click_glass) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setOnView()
     }
-
-
 
     private fun setOnView() {
         val apart = Apart(
@@ -37,9 +35,17 @@ class GlassActivity : BaseActivity<ActivityGlassBinding>(R.layout.activity_glass
 
         repeat(apart.building_room_number) { roomNumber ->
             if (roomNumber == apart.user_room_number - 1) buildingSection.add(
-                GlassExpandItem(isMine = true, roomNumber = "${apart.building_floor}0${roomNumber}호")
+                GlassExpandItem(
+                    isMine = true,
+                    roomNumber = "${apart.building_floor}0${roomNumber}호"
+                )
             )
-            else buildingSection.add(GlassExpandItem(roomNumber = "${apart.building_floor}0${roomNumber}호"))
+            else buildingSection.add(
+                GlassExpandItem(
+                    roomNumber = "${apart.building_floor}0${roomNumber}호",
+                    isClick = true
+                )
+            )
         }
         groupAdapter.add(buildingSection)
         binding.rvRoom.adapter = groupAdapter
@@ -49,6 +55,4 @@ class GlassActivity : BaseActivity<ActivityGlassBinding>(R.layout.activity_glass
         binding.rvRoom.layoutManager = staggeredGridLayoutManager
         groupAdapter.spanSizeLookup
     }
-
-
 }
