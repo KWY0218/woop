@@ -8,5 +8,4 @@ class WallPieceLeftItem : BindableItem<ItemPieceWallLeftBinding>() {
 
     override fun getLayout(): Int = R.layout.item_piece_wall_left
     override fun bind(viewBinding: ItemPieceWallLeftBinding, position: Int) {}
-
 }

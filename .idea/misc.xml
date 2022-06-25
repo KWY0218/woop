@@ -3,9 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/drawable/ic_back.xml" value="0.171" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/drawable/ic_exclamationmark.xml" value="0.1" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/drawable/ic_human.xml" value="0.1" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/drawable/ic_more.xml" value="0.1" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/drawable/ic_n.xml" value="0.1" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/drawable/ic_white_human.xml" value="0.1" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/drawable/icn_floating.xml" value="0.1" />
         <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/drawable/img_apt_top.xml" value="0.1" />
-        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/layout/activity_main.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/drawable/rectangle_expand_off.xml" value="0.1" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/drawable/rectangle_expand_on.xml" value="0.1" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/drawable/rectangle_off.xml" value="0.1" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/layout/activity_glass.xml" value="0.15925925925925927" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/layout/activity_post_detail.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/layout/activity_post_list.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/layout/include_header.xml" value="0.15925925925925927" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/layout/item_expand_glass.xml" value="0.1" />
         <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/layout/item_top.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/wodrk/Desktop/Android_ WorkSpace/woop/app/src/main/res/layout/item_wall.xml" value="0.30757282692521576" />
       </map>
     </option>
   </component>
