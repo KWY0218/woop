@@ -10,8 +10,14 @@ class GlassActivity : BaseActivity<ActivityGlassBinding>(R.layout.activity_glass
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setOnClickListner()
+        setOnView()
+    }
+
+    private fun setOnView() {
+
     }
 
     private fun setOnClickListner() {
+
     }
 }

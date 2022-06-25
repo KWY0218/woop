@@ -1,5 +1,6 @@
 package com.example.woop
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -15,10 +16,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setOnView()
         setOnClickListener()
     }
 
     private fun setOnClickListener() {
+        binding.ivMorning.setOnClickListener {
+            val fadeOut = ObjectAnimator.ofFloat(binding.ivMorning, "alpha", 1f, 0f)
+            fadeOut.duration = 1500
+            fadeOut.start()
+
+            val fadeOut2 = ObjectAnimator.ofFloat(binding.ivSun, "alpha", 1f, 0f)
+            fadeOut2.duration = 1500
+            fadeOut2.start()
+        }
+
+        binding.fabMain.setOnClickListener {
+//            ObjectAnimator.ofFloat(binding.llFab, "translationY", -0f).apply { start() }
+        }
     }
 
     private fun setOnView() {
@@ -34,27 +49,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         var groupAdapter = GroupieAdapter()
         val buildingSection = Section()
 
-        val floor = 15
-        repeat(floor) {
-            repeat(4) {
-                buildingSection.add(WallItem())
-                repeat(apart.building_floor) { floor ->
-                    repeat(4) { roomNumber ->
-                        if (floor == apart.user_floor - 1 && roomNumber == apart.user_room_number - 1) buildingSection.add(
-                            WallItem(MainGlass(isMe = true))
-                        )
-                        else buildingSection.add(WallItem())
-                    }
-                }
-
-                binding.rvBuilding.adapter = groupAdapter
-                val staggeredGridLayoutManager =
-                    StaggeredGridLayoutManager(4, LinearLayoutManager.VERTICAL)
-                staggeredGridLayoutManager.reverseLayout = true
-                binding.rvBuilding.layoutManager = staggeredGridLayoutManager
-
-                groupAdapter.spanSizeLookup
+        repeat(apart.building_floor) { floor ->
+            repeat(4) { roomNumber ->
+                if (floor == apart.user_floor - 1 && roomNumber == apart.user_room_number - 1) buildingSection.add(
+                    WallItem(MainGlass(isMe = true))
+                )
+                else buildingSection.add(WallItem())
             }
         }
+        groupAdapter.add(buildingSection)
+        binding.rvBuilding.adapter = groupAdapter
+        val staggeredGridLayoutManager =
+            StaggeredGridLayoutManager(4, LinearLayoutManager.VERTICAL)
+        staggeredGridLayoutManager.reverseLayout = true
+        binding.rvBuilding.layoutManager = staggeredGridLayoutManager
+        groupAdapter.spanSizeLookup
     }
 }
