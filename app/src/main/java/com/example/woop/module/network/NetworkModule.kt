@@ -1,14 +1,15 @@
 package com.example.woop.module.network
 
+import com.example.woop.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -29,8 +30,14 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("암거나 넣어용 뿅뿅")
+            .baseUrl("http://172.20.67.29:8090")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideApi(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
     }
 }

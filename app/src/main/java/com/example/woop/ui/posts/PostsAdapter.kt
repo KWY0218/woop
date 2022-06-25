@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.woop.R
-import com.example.woop.data.model.Post
+import com.example.woop.model.Post
 import com.example.woop.databinding.PostFrameBinding
 
 class PostsAdapter(private val context: Context, private val onItemClick: (Post) -> Unit) :
@@ -19,14 +19,14 @@ class PostsAdapter(private val context: Context, private val onItemClick: (Post)
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
-        @SuppressLint("ResourceType")
+        @SuppressLint("ResourceType", "SetTextI18n")
         fun bind(post: Post, context: Context, onItemClick: (Post) -> Unit) {
             binding.postRoot.setOnClickListener {
                 onItemClick(post)
             }
             binding.postContent.text = post.content
             binding.postTitle.text = post.title
-            binding.postWriter.text = post.writer
+            binding.postWriter.text = "${post.userId.dong}동 ${post.userId.ho}호 ${post.userId.nickName}"
             when (post.tag) {
                 0 -> {
                     binding.postTag.text = "음식쉐어"
@@ -85,7 +85,7 @@ class PostsAdapter(private val context: Context, private val onItemClick: (Post)
             }
 
             override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
-                return oldItem.writer == newItem.writer
+                return oldItem.postId == newItem.postId
             }
         }
     }

@@ -7,7 +7,7 @@
 
         <variable
             name="comment"
-            type="com.example.woop.data.model.Post.Comment" />
+            type="com.example.woop.model.Comment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -5,16 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.woop.data.model.Post
+import com.example.woop.model.Comment
 import com.example.woop.databinding.CommentFrameBinding
 
 class CommentAdapter :
-    ListAdapter<Post.Comment, CommentAdapter.CommentViewHolder>(COMMENT_COMPARATOR) {
+    ListAdapter<Comment, CommentAdapter.CommentViewHolder>(COMMENT_COMPARATOR) {
 
     class CommentViewHolder(
         private val binding: CommentFrameBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(comment: Post.Comment) {
+        fun bind(comment: Comment) {
             binding.comment = comment
         }
     }
@@ -30,12 +30,12 @@ class CommentAdapter :
     }
 
     companion object {
-        private val COMMENT_COMPARATOR = object : DiffUtil.ItemCallback<Post.Comment>() {
-            override fun areItemsTheSame(oldItem: Post.Comment, newItem: Post.Comment): Boolean {
+        private val COMMENT_COMPARATOR = object : DiffUtil.ItemCallback<Comment>() {
+            override fun areItemsTheSame(oldItem: Comment, newItem: Comment): Boolean {
                 return oldItem === newItem
             }
 
-            override fun areContentsTheSame(oldItem: Post.Comment, newItem: Post.Comment): Boolean {
+            override fun areContentsTheSame(oldItem: Comment, newItem: Comment): Boolean {
                 return oldItem.userName == newItem.userName
             }
         }
