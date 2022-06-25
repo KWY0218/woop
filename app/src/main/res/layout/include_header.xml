@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="TextView"
+            android:fontFamily="@font/cafe24ssurround"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/iv_back"
