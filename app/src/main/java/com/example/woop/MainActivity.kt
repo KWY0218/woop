@@ -4,19 +4,26 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.woop.databinding.ActivityMainBinding
-import com.example.woop.model.Apart
 import com.example.woop.model.MainGlass
 import com.example.woop.ui.ClickDialog
 import com.example.woop.ui.GlassActivity
 import com.example.woop.ui.base.BaseActivity
 import com.example.woop.ui.item.WallItem
+import com.example.woop.ui.write.WriteActivity
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+    @Inject
+    lateinit var apiService: ApiService
 
     var isFab = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,25 +63,42 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             ClickDialog().show(this.supportFragmentManager.beginTransaction(), "logout")
         }
 
+        binding.btnWrite.setOnClickListener {
+            startActivity(Intent(this@MainActivity, WriteActivity::class.java))
+        }
+
         binding.rvBuilding.setOnClickListener {
             startActivity(Intent(this@MainActivity, GlassActivity::class.java))
         }
     }
 
     private fun setOnView() {
-        val apart = Apart(
-            building_name = "서울 광역시 진달래 아파트 403동",
-            building_floor = 15,
-            building_room_number = 8,
-            user_floor = 14,
-            user_room_number = 3
-        )
-        binding.include.tvTitle.text = apart.building_name
-        binding.include.tvTitle.visibility = View.VISIBLE
+        lifecycleScope.launch {
+            runCatching { apiService.getApart(1) }
+                .onSuccess { apart ->
+                    binding.include.tvTitle.text = apart.response.building_name
+                    binding.include.tvTitle.visibility = View.VISIBLE
+                    var groupAdapter = GroupieAdapter()
+                    val buildingSection = Section()
 
-        var groupAdapter = GroupieAdapter()
-        val buildingSection = Section()
+                    repeat(apart.response.building_floor) { floor ->
+                        repeat(4) { roomNumber ->
+                            if (floor == apart.response.user_floor - 1 && roomNumber == apart.response.user_room_number - 1) buildingSection.add(
+                                WallItem(MainGlass(isMe = true))
+                            )
+                            else buildingSection.add(WallItem())
+                        }
+                    }
+                    groupAdapter.add(buildingSection)
+                    binding.rvBuilding.adapter = groupAdapter
+                    val staggeredGridLayoutManager =
+                        StaggeredGridLayoutManager(4, LinearLayoutManager.VERTICAL)
+                    staggeredGridLayoutManager.reverseLayout = true
+                    binding.rvBuilding.layoutManager = staggeredGridLayoutManager
 
+                    groupAdapter.spanSizeLookup
+                }
+                .onFailure { }
         repeat(apart.building_floor) { floor ->
             repeat(4) { roomNumber ->
                 if (floor == apart.user_floor - 1 && roomNumber == apart.user_room_number - 1) buildingSection.add(
@@ -83,13 +107,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 else buildingSection.add(WallItem(MainGlass(floor = floor+1)))
             }
         }
-        groupAdapter.add(buildingSection)
-        binding.rvBuilding.adapter = groupAdapter
-        val staggeredGridLayoutManager =
-            StaggeredGridLayoutManager(4, LinearLayoutManager.VERTICAL)
-        staggeredGridLayoutManager.reverseLayout = true
-        binding.rvBuilding.layoutManager = staggeredGridLayoutManager
-
-        groupAdapter.spanSizeLookup
     }
 }
