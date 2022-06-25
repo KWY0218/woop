@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.woop.databinding.ActivityMainBinding
 import com.example.woop.model.Apart
 import com.example.woop.model.MainGlass
-import com.example.woop.ui.CLickDialog
+import com.example.woop.ui.ClickDialog
 import com.example.woop.ui.GlassActivity
 import com.example.woop.ui.base.BaseActivity
 import com.example.woop.ui.item.WallItem
@@ -53,7 +53,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             }
         }
         binding.btnCock.setOnClickListener {
-            CLickDialog().show(this.supportFragmentManager, "logout")
+            ClickDialog().show(this.supportFragmentManager.beginTransaction(), "logout")
         }
 
         binding.rvBuilding.setOnClickListener {
@@ -78,9 +78,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         repeat(apart.building_floor) { floor ->
             repeat(4) { roomNumber ->
                 if (floor == apart.user_floor - 1 && roomNumber == apart.user_room_number - 1) buildingSection.add(
-                    WallItem(MainGlass(isMe = true))
+                    WallItem(MainGlass(isMe = true, floor = floor+1))
                 )
-                else buildingSection.add(WallItem())
+                else buildingSection.add(WallItem(MainGlass(floor = floor+1)))
             }
         }
         groupAdapter.add(buildingSection)

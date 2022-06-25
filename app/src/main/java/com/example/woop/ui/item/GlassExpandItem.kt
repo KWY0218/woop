@@ -14,6 +14,7 @@ class GlassExpandItem(
     val isClick: Boolean = false
 ) : BindableItem<ItemExpandGlassBinding>() {
 
+    var isClicked = false
     override fun getLayout(): Int = R.layout.item_expand_glass
 
     override fun bind(binding: ItemExpandGlassBinding, position: Int) {
@@ -26,24 +27,15 @@ class GlassExpandItem(
         binding.ivBigHuman.visibility = if (isMine) View.VISIBLE else View.GONE
 
         if (isExit) {
-            if (isAlert) {
+            binding.ivExpandGlass.setOnClickListener {
+                isClicked = !isClicked
+                binding.ivExpandGlass.background = if (isClicked)
+                    binding.root.resources.getDrawable(R.drawable.glass_click) else binding.root.resources.getDrawable(
+                    R.drawable.rectangle_expand_on
+                )
             }
-
-            if (isClick) {
-
-                if (isExit) {
-                    val isClicked = false
-                    binding.ivExpandGlass.setOnClickListener {
-                        isClicked == !isClicked
-                        binding.ivExpandGlass.background = if (isClicked)
-                            binding.root.resources.getDrawable(R.drawable.glass_click) else binding.root.resources.getDrawable(
-                            R.drawable.rectangle_expand_on
-                        )
-                    }
-                } else {
-                    Toast.makeText(binding.root.context, "공실입니다", Toast.LENGTH_SHORT).show()
-                }
-            }
+        } else {
+            Toast.makeText(binding.root.context, "공실입니다", Toast.LENGTH_SHORT).show()
         }
     }
 }
