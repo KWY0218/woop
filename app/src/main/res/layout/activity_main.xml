@@ -119,7 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:text="✏️  글쓰기"
+                    android:text="글쓰기"
                     android:textColor="@color/black" />
 
                 <com.google.android.material.button.MaterialButton
@@ -127,7 +127,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:text="👆🏻 콕 찌르기"
+                    android:text="콕 찌르기"
                     android:textColor="@color/black"
                     app:backgroundTint="@color/white" />
             </LinearLayout>
