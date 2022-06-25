@@ -9,12 +9,13 @@ import com.example.woop.data.model.Post
 import com.example.woop.databinding.CommentFrameBinding
 
 class CommentAdapter :
-    ListAdapter<Post.Comment, CommentAdapter.CommentViewHolder>(CommentAdapter.COMMENT_COMPARATOR) {
+    ListAdapter<Post.Comment, CommentAdapter.CommentViewHolder>(COMMENT_COMPARATOR) {
 
     class CommentViewHolder(
         private val binding: CommentFrameBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(comment: Post.Comment) {
+            binding.comment = comment
         }
     }
 

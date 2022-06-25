@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="comment"
+            type="com.example.woop.data.model.Post.Comment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,13 +16,14 @@
 
         <TextView
             android:id="@+id/comment_writer"
-            android:textSize="12sp"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
+            android:text="@{comment.userName}"
             android:textColor="@color/custom_black"
+            android:textSize="12sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="201동 808호 미래 맏며느리" />
@@ -30,8 +34,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
             android:layout_marginTop="12dp"
-            android:textSize="14sp"
+            android:text="@{comment.content}"
             android:textColor="@color/custom_black"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/comment_writer"
             tools:text="오 좋습니다~ 그럼 7시에 놀이터에서 봬요~" />
@@ -41,11 +46,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:text="답글달기"
             android:textColor="@color/custom_grey"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/comment_writer"
-            app:layout_constraintTop_toBottomOf="@+id/comment_content"
-            tools:text="답글달기" />
+            app:layout_constraintTop_toBottomOf="@+id/comment_content" />
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/comment_div"
