@@ -99,13 +99,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     groupAdapter.spanSizeLookup
                 }
                 .onFailure { }
-        repeat(apart.building_floor) { floor ->
-            repeat(4) { roomNumber ->
-                if (floor == apart.user_floor - 1 && roomNumber == apart.user_room_number - 1) buildingSection.add(
-                    WallItem(MainGlass(isMe = true, floor = floor+1))
-                )
-                else buildingSection.add(WallItem(MainGlass(floor = floor+1)))
-            }
         }
     }
 }

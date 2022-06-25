@@ -47,30 +47,15 @@
 
         <activity
             android:name=".ui.write.WriteActivity"
-            android:exported="false" >
-        <activity
-            android:name=".ui.detail.PostDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.write.WriteActivity"
-            android:exported="false" />
-
-
-        </activity>
+            android:exported="false"/>
 
         <activity
             android:name=".ui.posts.PostListActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".ui.GlassActivity"
-            android:exported="false"></activity>
-            android:exported="false">
-        </activity>
+            android:exported="false" />
 
         <activity
-            android:name=".ui.GlassClickActivity"
-            android:exported="false">
-        </activity>
+            android:name=".ui.GlassActivity"
+            android:exported="false" />
 
     </application>
 
