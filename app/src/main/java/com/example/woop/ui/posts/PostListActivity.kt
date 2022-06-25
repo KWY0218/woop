@@ -12,9 +12,9 @@ import com.example.woop.databinding.ActivityPostListBinding
 import com.example.woop.model.Post
 import com.example.woop.ui.detail.PostDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class PostListActivity : AppCompatActivity() {
@@ -34,7 +34,10 @@ class PostListActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_post_list)
         initAdapter()
         lifecycleScope.launch {
-            runCatching { apiService.getPost() }
+            runCatching {
+                delay(500)
+                apiService.getPost()
+            }
                 .onSuccess {
                     Log.d("asdf", "post success: ${it.response}")
                     postsAdapter.submitList(it.response)
