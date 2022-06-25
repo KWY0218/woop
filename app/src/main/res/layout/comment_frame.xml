@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/comment_writer"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/custom_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="201동 808호 미래 맏며느리" />
+
+        <TextView
+            android:id="@+id/comment_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="12dp"
+            android:textSize="14sp"
+            android:textColor="@color/custom_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comment_writer"
+            tools:text="오 좋습니다~ 그럼 7시에 놀이터에서 봬요~" />
+
+        <TextView
+            android:id="@+id/comment_reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/custom_grey"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/comment_writer"
+            app:layout_constraintTop_toBottomOf="@+id/comment_content"
+            tools:text="답글달기" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/comment_div"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@+id/comment_reply"
+            app:layout_constraintTop_toBottomOf="@+id/comment_reply" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

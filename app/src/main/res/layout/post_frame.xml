@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/post_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="21dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/post_tag"
+            android:layout_width="57dp"
+            android:layout_height="23dp"
+            android:clickable="false"
+            android:paddingHorizontal="2dp"
+            android:paddingVertical="4dp"
+            android:textColor="@color/custom_black"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/post_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/post_title"
+            tools:text="음식쉐어" />
+
+        <TextView
+            android:id="@+id/post_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="21dp"
+            android:textColor="@color/custom_black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/post_tag"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="같이 치킨 시켜드실 분~?" />
+
+        <TextView
+            android:id="@+id/post_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/custom_black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/post_tag"
+            app:layout_constraintTop_toBottomOf="@+id/post_title"
+            tools:text="치킨 먹고싶은데 배달비가 넘 부담스럽네여ㅠ \n 겸사겸사 동네친구도 구할 겸 오늘 저녁 같이해요~" />
+
+        <TextView
+            android:id="@+id/post_writer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/custom_grey"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/post_content"
+            app:layout_constraintTop_toBottomOf="@+id/post_content"
+            tools:text="201동 205호 총각" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/post_div"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            app:dividerColor="@color/custom_div_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_writer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

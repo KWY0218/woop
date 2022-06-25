@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        tools:context=".ui.detail.PostDetailActivity">
+
+        <TextView
+            android:id="@+id/detail_writer_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/custom_grey"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/detail_title_tv"
+            app:layout_constraintTop_toBottomOf="@+id/detail_title_tv"
+            tools:text="201동 102호 총각" />
+
+        <ImageView
+            android:id="@+id/detail_suffix_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:src="@drawable/ic_suffix"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/detail_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/custom_black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/detail_tag1_cp"
+            app:layout_constraintTop_toBottomOf="@+id/detail_tag1_cp"
+            tools:text="같이 치킨 시켜드실 분~?" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/detail_tag1_cp"
+            android:layout_width="57dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="34dp"
+            android:clickable="false"
+            android:paddingHorizontal="2dp"
+            android:paddingVertical="4dp"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@+id/detail_suffix_iv"
+            app:layout_constraintTop_toBottomOf="@+id/detail_suffix_iv"
+            tools:text="음식쉐어" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/post_div"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            app:dividerColor="@color/custom_div_grey"
+            app:layout_constraintStart_toStartOf="@+id/detail_writer_tv"
+            app:layout_constraintTop_toBottomOf="@+id/detail_writer_tv" />
+
+        <TextView
+            android:id="@+id/detail_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/custom_black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_div"
+            tools:text="치킨 먹고싶은데 배달비가 넘 부담스럽네여ㅠ
+겸사겸사 동네친구도 구할 겸 오늘 저녁 같이해요~" />
+
+        <ImageView
+            android:id="@+id/detail_comment_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:src="@drawable/ic_icn_comment"
+            app:layout_constraintStart_toStartOf="@+id/detail_content_tv"
+            app:layout_constraintTop_toBottomOf="@+id/detail_content_tv" />
+
+        <TextView
+            android:id="@+id/detail_comment_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/custom_orange"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_comment_img"
+            app:layout_constraintStart_toEndOf="@+id/detail_comment_img"
+            app:layout_constraintTop_toTopOf="@+id/detail_comment_img"
+            tools:text="3" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/post_div2"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="14dp"
+            app:dividerColor="@color/custom_div_grey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_comment_img" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/post_div2"
+            tools:listitem="@layout/comment_frame" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
