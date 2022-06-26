@@ -51,8 +51,8 @@
 
         <activity
             android:name=".ui.posts.PostListActivity"
-            android:exported="false" />
-
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".ui.GlassActivity"
             android:exported="false" />

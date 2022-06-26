@@ -1,6 +1,7 @@
 package com.example.woop.module.network
 
 import com.example.woop.ApiService
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -36,7 +36,7 @@ class PostDetailActivity : AppCompatActivity() {
                         "${it.response.userId.dong}동 ${it.response.userId.ho}호 ${it.response.userId.nickName}"
                     binding.detailContentTv.text = it.response.content
                     when (it.response.tag) {
-                        0 -> {
+                        1 -> {
                             binding.detailTag1Cp.text = "음식쉐어"
                             binding.detailTag1Cp.background =
                                 ContextCompat.getDrawable(
@@ -51,7 +51,7 @@ class PostDetailActivity : AppCompatActivity() {
                             )
                             binding.detailTag1Cp.isSelected = !binding.detailTag1Cp.isSelected
                         }
-                        1 -> {
+                        2 -> {
                             binding.detailTag1Cp.text = "요청해요"
                             binding.detailTag1Cp.background =
                                 ContextCompat.getDrawable(
@@ -66,7 +66,7 @@ class PostDetailActivity : AppCompatActivity() {
                             )
                             binding.detailTag1Cp.isSelected = !binding.detailTag1Cp.isSelected
                         }
-                        2 -> {
+                        3 -> {
                             binding.detailTag1Cp.text = "친목해요"
                             binding.detailTag1Cp.background =
                                 ContextCompat.getDrawable(

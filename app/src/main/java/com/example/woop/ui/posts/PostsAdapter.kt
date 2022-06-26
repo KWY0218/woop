@@ -28,7 +28,7 @@ class PostsAdapter(private val context: Context, private val onItemClick: (Post)
             binding.postTitle.text = post.title
             binding.postWriter.text = "${post.userId.dong}동 ${post.userId.ho}호 ${post.userId.nickName}"
             when (post.tag) {
-                0 -> {
+                1 -> {
                     binding.postTag.text = "음식쉐어"
                     binding.postTag.background =
                         ContextCompat.getDrawable(context, R.drawable.food_back_selector)
@@ -40,7 +40,7 @@ class PostsAdapter(private val context: Context, private val onItemClick: (Post)
                     )
                     binding.postTag.isSelected = !binding.postTag.isSelected
                 }
-                1 -> {
+                2 -> {
                     binding.postTag.text = "요청해요"
                     binding.postTag.background =
                         ContextCompat.getDrawable(context, R.drawable.request_back_selector)
@@ -52,7 +52,7 @@ class PostsAdapter(private val context: Context, private val onItemClick: (Post)
                     )
                     binding.postTag.isSelected = !binding.postTag.isSelected
                 }
-                2 -> {
+                3 -> {
                     binding.postTag.text = "친목해요"
                     binding.postTag.background =
                         ContextCompat.getDrawable(context, R.drawable.friend_back_selector)

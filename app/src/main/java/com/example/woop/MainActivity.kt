@@ -3,6 +3,7 @@ package com.example.woop
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,12 +14,13 @@ import com.example.woop.ui.ClickDialog
 import com.example.woop.ui.GlassActivity
 import com.example.woop.ui.base.BaseActivity
 import com.example.woop.ui.item.WallItem
+import com.example.woop.ui.posts.PostListActivity
 import com.example.woop.ui.write.WriteActivity
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
@@ -70,12 +72,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.rvBuilding.setOnClickListener {
             startActivity(Intent(this@MainActivity, GlassActivity::class.java))
         }
+
+        binding.mainBt.setOnClickListener {
+            startActivity(Intent(this, PostListActivity::class.java))
+        }
     }
 
     private fun setOnView() {
         lifecycleScope.launch {
             runCatching { apiService.getApart(1) }
                 .onSuccess { apart ->
+                    Log.d("aprart", "sadfasdf")
                     binding.include.tvTitle.text = apart.response.building_name
                     binding.include.tvTitle.visibility = View.VISIBLE
                     var groupAdapter = GroupieAdapter()
@@ -98,7 +105,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
                     groupAdapter.spanSizeLookup
                 }
-                .onFailure { }
+                .onFailure {
+                    Log.d("asdf", "post fail: ${it.message} error: $it")
+                }
         }
     }
 }

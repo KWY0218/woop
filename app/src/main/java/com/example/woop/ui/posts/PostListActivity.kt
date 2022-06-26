@@ -12,9 +12,9 @@ import com.example.woop.databinding.ActivityPostListBinding
 import com.example.woop.model.Post
 import com.example.woop.ui.detail.PostDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class PostListActivity : AppCompatActivity() {
