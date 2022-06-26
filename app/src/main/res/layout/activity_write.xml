@@ -113,7 +113,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/chipGroup"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="@+id/write_tag_tv"
@@ -149,8 +149,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/write_food_cp"
-                android:layout_width="65dp"
-                android:layout_height="36dp"
+                android:layout_width="68dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="12dp"
                 android:background="@drawable/food_back_selector"
                 android:paddingHorizontal="2dp"

@@ -1,6 +1,5 @@
 package com.example.woop.ui.write
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
@@ -11,11 +10,10 @@ import com.example.woop.ApiService
 import com.example.woop.R
 import com.example.woop.databinding.ActivityWriteBinding
 import com.example.woop.request.WriteRequest
-import com.example.woop.ui.posts.PostListActivity
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class WriteActivity : AppCompatActivity() {
@@ -32,6 +30,8 @@ class WriteActivity : AppCompatActivity() {
                     vm = viewModel
                     lifecycleOwner = this@WriteActivity
                 }
+
+        binding.writeSuffixIv.setOnClickListener { finish() }
 
         binding.writeFoodCp.setOnClickListener {
             binding.writeFoodCp.isSelected = true
@@ -67,7 +67,7 @@ class WriteActivity : AppCompatActivity() {
                     }
                     .onFailure { Log.d("asdf", "fail") }
             }
-            startActivity(Intent(this, PostListActivity::class.java))
+            finish()
         }
     }
 

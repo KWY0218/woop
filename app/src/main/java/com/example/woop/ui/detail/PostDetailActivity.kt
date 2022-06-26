@@ -26,6 +26,7 @@ class PostDetailActivity : AppCompatActivity() {
         val postId = intent.getIntExtra("postId", 1)
         commentAdapter = CommentAdapter()
         binding.detailCommentRv.adapter = commentAdapter
+        binding.detailSuffixIv.setOnClickListener { finish() }
         lifecycleScope.launch {
             runCatching {
                 apiService.getPostDetail(postId)
