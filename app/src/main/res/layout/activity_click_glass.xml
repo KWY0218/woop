@@ -24,5 +24,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include2"
             app:stackFromEnd="true" />
+
+        <ImageView
+            android:id="@+id/iv_cock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/btn_click" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

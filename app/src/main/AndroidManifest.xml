@@ -57,6 +57,9 @@
             android:name=".ui.GlassActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".ui.GlassClickActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

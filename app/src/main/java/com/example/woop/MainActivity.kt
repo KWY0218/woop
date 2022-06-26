@@ -16,11 +16,16 @@ import com.example.woop.ui.base.BaseActivity
 import com.example.woop.ui.item.WallItem
 import com.example.woop.ui.posts.PostListActivity
 import com.example.woop.ui.write.WriteActivity
+import com.google.firebase.messaging.FirebaseMessaging
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
@@ -29,9 +34,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     var isFab = false
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setOnView()
         setOnClickListener()
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+            val token = it.result
+            CoroutineScope(Dispatchers.IO).launch {
+                runCatching {
+                    apiService.saveToken(token, 2)
+                }.onSuccess {
+                    Timber.d("토큰 성공")
+                }.onFailure {
+                    Timber.d("토큰 실패")
+                }
+            }
+            it.result
+        }
     }
 
     private fun setOnClickListener() {
@@ -80,7 +100,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private fun setOnView() {
         lifecycleScope.launch {
-            runCatching { apiService.getApart(1) }
+            runCatching { apiService.getApart(2) }
                 .onSuccess { apart ->
                     Log.d("aprart", "sadfasdf")
                     binding.include.tvTitle.text = apart.response.building_name

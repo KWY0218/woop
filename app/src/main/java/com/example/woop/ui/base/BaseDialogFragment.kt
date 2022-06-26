@@ -30,15 +30,16 @@ abstract class BaseDialogFragment<B : ViewDataBinding>(private val layoutId: Int
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
-        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog?.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+        setWindowFeature()
+
 
         binding.root.setOnClickListener {
             startActivity(Intent(binding.root.context, GlassClickActivity::class.java))
         }
         return binding.root
     }
+
+    abstract fun setWindowFeature()
 
     open fun setCancel(setting: Boolean) {
         isCancelable = setting

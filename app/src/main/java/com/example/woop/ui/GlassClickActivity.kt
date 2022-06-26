@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.woop.ApiService
 import com.example.woop.R
 import com.example.woop.databinding.ActivityClickGlassBinding
 import com.example.woop.model.Apart
@@ -11,8 +12,18 @@ import com.example.woop.ui.base.BaseActivity
 import com.example.woop.ui.item.GlassExpandItem
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import timber.log.Timber
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class GlassClickActivity : BaseActivity<ActivityClickGlassBinding>(R.layout.activity_click_glass) {
+
+    @Inject
+    lateinit var apiService: ApiService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,5 +65,18 @@ class GlassClickActivity : BaseActivity<ActivityClickGlassBinding>(R.layout.acti
         staggeredGridLayoutManager.reverseLayout = true
         binding.rvRoom.layoutManager = staggeredGridLayoutManager
         groupAdapter.spanSizeLookup
+
+        binding.ivCock.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                runCatching {
+                    apiService.qooq(103, 803, 2)
+                }.onSuccess {
+                    Timber.d(" 보낸다")
+                }.onFailure {
+                    Timber.d(" 못 보낸다")
+                }
+            }
+            CockDialog().show(this.supportFragmentManager.beginTransaction(), "logout")
+        }
     }
 }

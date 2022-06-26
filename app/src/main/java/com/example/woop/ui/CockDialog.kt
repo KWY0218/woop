@@ -1,17 +1,14 @@
 package com.example.woop.ui
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import com.example.studymatchingapp.ui.base.BaseDialogFragment
 import com.example.woop.R
-import com.example.woop.databinding.FragmentDialogClickBinding
+import com.example.woop.databinding.FragmentCockDialogBinding
 
-class ClickDialog : BaseDialogFragment<FragmentDialogClickBinding>(R.layout.fragment_dialog_click) {
+class CockDialog : BaseDialogFragment<FragmentCockDialogBinding>(R.layout.fragment_cock_dialog) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +24,5 @@ class ClickDialog : BaseDialogFragment<FragmentDialogClickBinding>(R.layout.frag
     }
 
     override fun setWindowFeature() {
-        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog?.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
     }
 }

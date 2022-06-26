@@ -14,6 +14,7 @@ import com.xwray.groupie.Section
 
 class GlassActivity : BaseActivity<ActivityGlassBinding>(R.layout.activity_glass) {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setOnView()
